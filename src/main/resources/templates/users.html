@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table {
+            width: 20%;
+            background: white;
+            color: white;
+            border-spacing: 1px;
+        }
+
+        td, th {
+            background: black;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>USERS TABLE</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Login</th>
+            <th>Password</th>
+            <th>Role</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${listUser}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.password}"></td>
+            <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
+            <td><a th:href="@{/remove/{id}(id=${user.id})}">Remove</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+<br/>
+<br/>
+
+
+<h3> Add User</h3>
+
+<form action="#" th:action="@{/user/add}" th:object="${user}" method="post">
+    <label for="name">First name</label>
+    <input type="text" th:field="*{name}" id="name" placeholder="First Name">
+    <label for="lastName">Last name</label>
+    <input type="text" th:field="*{lastName}" id="lastName" placeholder="Last Name">
+    <label for="login">Login</label>
+    <input type="text" th:field="*{login}" id="login" placeholder="Login">
+    <label for="password">Password</label>
+    <input type="text" th:field="*{password}" id="password" placeholder="Password">
+
+
+    <input type="submit" value="Submit">
+</form>
+
+<br>
+<br>
+<br>
+
+<form th:action="@{/logout}">
+    <input type="submit" value="logout">
+</form>
+
+
+</body>
+</html>
