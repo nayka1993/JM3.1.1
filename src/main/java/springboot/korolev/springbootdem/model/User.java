@@ -2,7 +2,6 @@ package springboot.korolev.springbootdem.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import springboot.korolev.springbootdem.SecurityConfig;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -34,6 +33,7 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+
     public User() {
     }
 
@@ -44,7 +44,13 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-
+    public User(String name, String lastName, String login, String password, Set<Role> roles) {
+        this.name = name;
+        this.lastName = lastName;
+        this.login = login;
+        this.password = password;
+        this.roles = roles;
+    }
 
     public String getLogin() {
         return login;

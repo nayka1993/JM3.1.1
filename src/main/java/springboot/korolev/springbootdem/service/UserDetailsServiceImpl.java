@@ -9,11 +9,9 @@ import springboot.korolev.springbootdem.model.User;
 
 import javax.transaction.Transactional;
 
-
 @Service
 @Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
-
 
     private final UserService userService;
 

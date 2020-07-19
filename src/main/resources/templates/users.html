@@ -29,6 +29,9 @@
             <th>Login</th>
             <th>Password</th>
             <th>Role</th>
+            <th>Edit</th>
+            <th>Remove</th>
+
         </tr>
         </thead>
         <tbody>
@@ -38,6 +41,7 @@
             <td th:text="${user.lastName}"></td>
             <td th:text="${user.username}"></td>
             <td th:text="${user.password}"></td>
+            <td th:text="${user.roles}"></td>
             <td><a th:href="@{/edit/{id}(id=${user.id})}">Edit</a></td>
             <td><a th:href="@{/remove/{id}(id=${user.id})}">Remove</a></td>
         </tr>
@@ -59,6 +63,16 @@
     <input type="text" th:field="*{login}" id="login" placeholder="Login">
     <label for="password">Password</label>
     <input type="text" th:field="*{password}" id="password" placeholder="Password">
+    <tr>
+        <th>Role: </th>
+        <td>
+            <select name="role">
+                <option>ADMIN</option>
+                <option>USER</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
 
 
     <input type="submit" value="Submit">

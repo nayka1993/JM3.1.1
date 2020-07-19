@@ -1,4 +1,4 @@
-package springboot.korolev.springbootdem;
+package springboot.korolev.springbootdem.handler;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;

@@ -3,29 +3,34 @@ package springboot.korolev.springbootdem.model;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "roles")
 public class Role implements GrantedAuthority {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
-    private String name;
-
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    @Column(name = "name", unique = true, nullable = false)
+    private String role;
 
 
     public Role() {
     }
 
-    public Role(Long id, String name) {
+    public Role(Long id, String role) {
         this.id = id;
-        this.name = name;
+        this.role = role;
+    }
+
+    public Role(String role) {
+        this.role = role;
+    }
+
+    public Role(Long id) {
+        this.id = id;
     }
 
     public Long getId() {
@@ -36,25 +41,23 @@ public class Role implements GrantedAuthority {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getRole() {
+        return role;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRole(String name) {
+        this.role = name;
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
 
 
     @Override
     public String getAuthority() {
-        return name;
+        return role;
+    }
+
+    @Override
+    public String toString() {
+        return role;
     }
 }

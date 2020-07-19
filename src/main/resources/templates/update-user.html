@@ -23,6 +23,16 @@
         <label for="password">Password</label>
         <input type="text" th:field="*{password}" id="password" placeholder="Password">
         <br/>
+        <tr>
+            <th>Role: </th>
+            <td>
+                <select name="role">
+                    <option>ADMIN</option>
+                    <option>USER</option>
+                </select>
+            </td>
+        </tr>
+
         <input type="submit" value="Update User">
     </form>
 </div>
